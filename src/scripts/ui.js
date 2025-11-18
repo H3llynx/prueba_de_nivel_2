@@ -25,3 +25,14 @@ export const addToResult = (data) => {
     console.log(resultArray);
 }
 
+export const showHistory = () => {
+    const history = document.getElementById("fizzbuzz-history");
+    history.style.visibility = "visible";
+    history.innerHTML = "<h2>History</h2>";
+    resultArray.forEach(result => {
+        const flexContainer = document.createElement("div");
+        flexContainer.classList.add("flex-container");
+        flexContainer.innerHTML = `<p>${result.number} : ${result.result}</p>`
+        history.appendChild(flexContainer);
+    })
+}

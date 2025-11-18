@@ -42,12 +42,10 @@
 }
 
 :root {
-    --gradient: linear-gradient(120deg, var(--aquamarine), aquamarine, #eddd53);
-    --bg: linear-gradient(90deg, rgba(34, 34, 34, 0.2) 20%, rgba(34, 34, 34, 0.8));
+    --bg: linear-gradient(90deg, rgba(34, 34, 34, 0.4) 20%, rgba(34, 34, 34, 0.8));
     --text: #d9d9d9;
     --input-bg: linear-gradient(90deg, rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8));
     --box-bg: linear-gradient(90deg, rgba(34, 34, 34, 0.7), rgba(34, 34, 34, 0.5));
-    --aquamarine: rgba(127, 255, 212, 0.8);
     --dark: #191919;
     --button-bg: var(--gradient);
     --button-dark-bg: var(--dark);
@@ -55,25 +53,79 @@
     --shadow: 2px 2px 16px black;
 }
 
+:root[data-theme="pepe"] {
+    background: var(--bg),
+        url("../assets/pepe-the-turtle.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    --secondary: rgba(127, 255, 212, 0.8);
+    --gradient: linear-gradient(120deg, var(--secondary), aquamarine, #eddd53);
+}
+
+:root[data-theme="paco"] {
+    background: var(--bg),
+        url("../assets/paco-the-octopus.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    --secondary: #dc90ff;
+    --gradient: linear-gradient(120deg, var(--secondary), rgb(139, 140, 208), rgba(127, 255, 212, 0.8));
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background: var(--bg),
-        url("../assets/background.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-blend-mode: multiply;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 5% 0;
+    padding: 5%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--text);
     font-size: normal;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+
+    & button {
+        border: 0;
+        background: none;
+        box-shadow: none;
+        width: 50px;
+        cursor: pointer;
+        padding: 0.5rem;
+
+        img {
+            object-fit: contain;
+            width: 100%;
+            filter: drop-shadow(1px 1px 5px black);
+            transition: 0.5s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+
+            img {
+                opacity: 0.5;
+
+                &:hover {
+                    transform: none;
+                }
+            }
+        }
+    }
 }
 
 main {
@@ -82,10 +134,12 @@ main {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin: auto;
 }
 
 h1,
-h2 {
+h2,
+h3 {
     font-family: "Caveat", cursive;
     text-align: center;
     margin-top: 0;
@@ -102,6 +156,11 @@ h1 {
 
 h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 p {
@@ -133,6 +192,25 @@ form {
     display: flex;
     gap: 1rem;
     width: min(450px, 80vw);
+
+    button {
+        font-weight: 600;
+        padding: 0.4rem 2.4rem;
+        background: var(--button-bg);
+        color: var(--button-text);
+        border-radius: 2rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: 0.5s;
+        font-size: 0.8rem;
+
+        &:hover {
+            border: 1px solid var(--secondary);
+            background: var(--button-dark-bg);
+            transform: scale(1.1);
+            color: var(--text);
+        }
+    }
 }
 
 input {
@@ -140,7 +218,7 @@ input {
     background: var(--input-bg);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    border: 1px solid var(--aquamarine);
+    border: 1px solid var(--secondary);
     border-radius: 2rem;
     color: inherit;
     display: block;
@@ -162,25 +240,6 @@ input::-webkit-inner-spin-button {
     display: none;
 }
 
-button {
-    font-weight: 600;
-    padding: 0.4rem 2.4rem;
-    background: var(--button-bg);
-    color: var(--button-text);
-    border-radius: 2rem;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: 0.5s;
-    font-size: 0.8rem;
-
-    &:hover {
-        border: 1px solid var(--aquamarine);
-        background: var(--button-dark-bg);
-        transform: scale(1.1);
-        color: var(--text);
-    }
-}
-
 #fizzbuzz-output,
 #fizzbuzz-history {
     width: min(450px, 80vw);
@@ -190,7 +249,7 @@ button {
     background: #1e1e1eaa;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border: 1px dashed var(--aquamarine);
+    border: 1px dashed var(--secondary);
     animation: float 3.5s ease-in-out infinite;
     box-shadow: var(--shadow);
 }

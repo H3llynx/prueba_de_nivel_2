@@ -35,3 +35,8 @@ export const showHistory = () => {
         history.appendChild(flexContainer);
     })
 }
+
+export const applyTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("fizzbuzz-theme", theme);
+}

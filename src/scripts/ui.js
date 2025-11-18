@@ -17,5 +17,11 @@ export const showResult = (data) => {
     }
     if (data.data.result === "Fizz") {
         document.querySelector(".result").classList.add("fizz");
-    }
+    };
 }
+
+export const addToResult = (data) => {
+    resultArray.push({ number: data.data.number, result: data.data.result })
+    console.log(resultArray);
+}
+

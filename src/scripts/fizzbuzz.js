@@ -13,7 +13,7 @@ export const fizzBuzz = (number) => {
         if (number % 5 === 0 && number % 3 === 0) {
             return {
                 status: "ok",
-                message: "success",
+                message: "El número es divisible por 3 y 5",
                 data: {
                     number: number,
                     result: "FizzBuzz"
@@ -22,7 +22,7 @@ export const fizzBuzz = (number) => {
         } else if (number % 5 === 0) {
             return {
                 status: "ok",
-                message: "success",
+                message: "El número es divisible por 5",
                 data: {
                     number: number,
                     result: "Buzz"
@@ -31,7 +31,7 @@ export const fizzBuzz = (number) => {
         } else if (number % 3 === 0) {
             return {
                 status: "ok",
-                message: "success",
+                message: "El número es divisible por 3",
                 data: {
                     number: number,
                     result: "Fizz"
@@ -39,7 +39,7 @@ export const fizzBuzz = (number) => {
             }
         } else return {
             status: "ok",
-            message: "success",
+            message: "El número no es divisible por 3 y 5",
             data: {
                 number: number,
                 result: number

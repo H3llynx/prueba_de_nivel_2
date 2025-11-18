@@ -22,7 +22,6 @@ export const showResult = (data) => {
 
 export const addToResult = (data) => {
     resultArray.push({ number: data.data.number, result: data.data.result })
-    console.log(resultArray);
 }
 
 export const showHistory = () => {

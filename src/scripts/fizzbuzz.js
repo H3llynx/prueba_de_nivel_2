@@ -1,6 +1,6 @@
 export const fizzBuzz = (number) => {
     try {
-        if (!number || isNaN(number)) {
+        if (isNaN(number)) {
             return {
                 status: "error",
                 message: "Please try again with a real number :)",
